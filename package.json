@@ -2,9 +2,12 @@
   "name": "amberwave.io",
   "version": "1.0.0",
   "description": "Amber Wave Company Website",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/amberwave/amberwave.io/issues"
   },
-  "homepage": "https://github.com/amberwave/amberwave.io#readme"
+  "homepage": "https://github.com/amberwave/amberwave.io#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
 }
