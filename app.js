@@ -22,4 +22,4 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000); // creates server
+app.listen(8080); // creates server
