@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "postcss public/css/tailwind.css -o public/css/style.css",
     "start": "node app.js",
-    "start-server": "node app.js",
     "dev": "nodemon app.js"
   },
   "repository": {
@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/amberwave/amberwave.io#readme",
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "tailwindcss": "^1.8.10"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
