@@ -1,0 +1,19 @@
+{
+  "name": "amberwave.io",
+  "version": "1.0.0",
+  "description": "Amber Wave Company Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amberwave/amberwave.io.git"
+  },
+  "author": "Nick Handy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amberwave/amberwave.io/issues"
+  },
+  "homepage": "https://github.com/amberwave/amberwave.io#readme"
+}
