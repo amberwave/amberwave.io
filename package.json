@@ -2,10 +2,13 @@
   "name": "amberwave.io",
   "version": "1.0.0",
   "description": "Amber Wave Company Website",
+  "nodemonConfig": {
+    "ext": "ejs,js,css,html,jpg,png,scss"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "postcss public/css/tailwind.css -o public/css/style.css",
+    "build": "postcss public/css/tailwind.css -o public/css/style.css",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -24,8 +27,12 @@
     "tailwindcss": "^1.8.10"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
     "body-parser": "^1.19.0",
+    "connect-livereload": "^0.6.1",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "livereload": "^0.9.1",
+    "postcss-cli": "^7.1.2"
   }
 }
