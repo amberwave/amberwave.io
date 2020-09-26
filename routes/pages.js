@@ -1,13 +1,14 @@
-const path = require('path');
-
 const express = require('express');
 
 const router = express.Router();
 
-const productsController = require('../controllers/products');
 
-
-router.get('/', productsController.getProducts);
+router.get('/', (req, res, next) => {
+    res.render('pages/index', {
+      path: '/',
+      pageTitle: 'Amber Wave'
+    });
+});
 
 module.exports = router;
 

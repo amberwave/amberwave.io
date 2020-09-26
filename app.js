@@ -3,8 +3,6 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const errorController = require('./controllers/error');
-
 const app = express();
 const livereload = require("livereload");
 
@@ -14,9 +12,7 @@ app.set('views', 'views');
 const liveReloadServer = livereload.createServer();
 const connectLivereload = require("connect-livereload");
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-const testRoutes = require('./routes/test');
+const pagesRoutes = require('./routes/pages');
 
 liveReloadServer.watch(path.join(__dirname, 'public'));
 
@@ -31,11 +27,10 @@ app.use(connectLivereload());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminRoutes.routes);
-app.use(shopRoutes);
+app.use(pagesRoutes);
 
-app.use(testRoutes);
-
-app.use(errorController.get404);
+app.use((req, res, next) => {
+  res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404' });
+});
 
 app.listen(8080); // creates server
