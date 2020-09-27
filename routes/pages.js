@@ -6,7 +6,8 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
     res.render('pages/index', {
       path: '/',
-      pageTitle: 'Amber Wave'
+      pageTitle: 'Amber Wave',
+      isOpen: false
     });
 });
 
