@@ -1,38 +1,24 @@
 {
-  "name": "amberwave.io",
+  "name": "amber_wave",
   "version": "1.0.0",
-  "description": "Amber Wave Company Website",
-  "nodemonConfig": {
-    "ext": "ejs,js,css,html,jpg,png,scss"
-  },
+  "description": "Source for Amber Wave Web Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss public/css/tailwind.css -o public/css/style.css",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "test": "node test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amberwave/amberwave.io.git"
-  },
-  "author": "Nick Handy",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/amberwave/amberwave.io/issues"
-  },
-  "homepage": "https://github.com/amberwave/amberwave.io#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.4",
-    "tailwindcss": "^1.8.10"
-  },
   "dependencies": {
-    "autoprefixer": "^9.8.6",
     "body-parser": "^1.19.0",
-    "connect-livereload": "^0.6.1",
-    "ejs": "^3.1.5",
+    "ejs": "^2.7.4",
     "express": "^4.17.1",
-    "livereload": "^0.9.1",
-    "postcss-cli": "^7.1.2"
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }

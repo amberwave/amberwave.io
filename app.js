@@ -1,36 +1,31 @@
-const path = require('path');
-
 const express = require('express');
-const bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
-const livereload = require("livereload");
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/public/assets')); // Serves public assets folder
+app.use(express.static(__dirname + '/public')); // Serves public assets folder
+app.set('views', [__dirname + '/views', __dirname + '/views/personal']);
 
-const liveReloadServer = livereload.createServer();
-const connectLivereload = require("connect-livereload");
+// API Data Streams
+app.use(express.json());
 
-const pagesRoutes = require('./routes/pages');
+//EJS
+app.use(expressLayouts);
+app.set('view engine', 'ejs')
 
-liveReloadServer.watch(path.join(__dirname, 'public'));
+//Bodyparser
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
-liveReloadServer.server.once("connection", () => {
-    setTimeout(() => {
-      liveReloadServer.refresh("/");
-    }, 100);
-  });
+const apiRoutes = require('./routes/api');
 
-app.use(connectLivereload());
+//Routes
+app.use('/', require('./routes/index'));
+app.use(apiRoutes);
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(pagesRoutes);
+const PORT = process.env.PORT || 8080;
 
-app.use((req, res, next) => {
-  res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404' });
-});
-
-app.listen(8080); // creates server
+app.listen(PORT, console.log(`Server started on port ${PORT}`));

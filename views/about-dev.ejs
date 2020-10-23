@@ -1,0 +1,26 @@
+<style>
+    body {
+        background-color: #e5e5e5;
+    }
+
+    .col-md-6 {
+        background-color: #fff;
+        border-radius: 5px;
+        height: 100% !important;
+    }
+
+    img {
+        margin-top: 1rem!important;
+    }
+</style>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <h1><%= devs.firstName %> <%= devs.lastName %></h1>
+        <h2><%= devs.jobTitle %></h2>
+        <img src="<%= devs.imageUrl %>" alt="" width="200" class="img-fluid  mb-3 img-thumbnail shadow-sm">
+        <p><%= devs.grade %> <%= devs.major %> student at <%= devs.school %></p>
+        <p><%= devs.description %></p>
+    </div>
+    <div class="col-md-3"></div>
+</div>
