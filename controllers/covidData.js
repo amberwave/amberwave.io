@@ -1,4 +1,4 @@
-const Search = require('../models/search');
+const Search = require('./search');
 
 exports.getPage = (req, res, next) => {
     res.render('add-data', {
