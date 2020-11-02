@@ -16,8 +16,5 @@ router.get('/search', (req, res, next) => {
     });
 });
 
-// About pages pulling data from db, see controllers/developer.js
-router.get('/about-us/', devController.getDevelopers);
-router.get('/about-us/:name', devController.getDeveloperByName);
 
 module.exports = router;

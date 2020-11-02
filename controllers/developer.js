@@ -1,4 +1,4 @@
-const Search = require('../models/search');
+const Search = require('./search');
 
 // The rows are passed to the ejs view as a js object as defined
 // in models/developer.js 

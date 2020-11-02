@@ -25,7 +25,7 @@ async function postSearch(e) {
     let output = ''; // holds the inserted html
 
     // Asynchronous function to send POST request to server at specified url
-    const response = await fetch('/api', options);
+    const response = await fetch('/api/search', options);
     // Wait until the response is received and then store it into data
     const data = await response.json();
 
