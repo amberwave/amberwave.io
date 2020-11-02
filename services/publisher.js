@@ -30,7 +30,7 @@ async function publish(queue, msgs) {
             await channel.sendToQueue(queue, Buffer.from(JSON.stringify(msgs[msg])));
             console.log(`Message sent to queue ${queue}`);
         }
-
+        channel.close();
     } catch(err) {
         console.log(`Error -> ${err}`);
     }
