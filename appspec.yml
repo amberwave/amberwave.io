@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /application/
+  - source: /
     destination: /web-apps/amberwave/
 # hooks:
 #   BeforeInstall:
