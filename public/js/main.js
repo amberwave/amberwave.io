@@ -8,12 +8,25 @@ async function getMessage() {
     const response = await fetch('/api/mqtt');
     // Wait until the response is received and then store it into data
     const data = await response.json();
-    if (data) {
-        console.log('Message Received');
-        console.log(data);
+    console.log('Message Received');
+    console.log(data);
+    //const msgs = data;
+    let output = '';
+    // console.log(msgs);
+    // console.log(msgs.id);
+    // console.log(msgs.command);
+    // console.log(msgs["node-type"]);
+
+    for (i = 0; i < data.node.length; i++) { 
+        output += 
+        `<tr>
+            <th>${data.node[i].id}</th>
+            <th>${data.node[i]["node-type"]}</th>
+            <th>${data.node[i].command}</th>
+        </tr>
+        `;
     }
-    const nodeMessage = data;
-    document.getElementById("msg").textContent = nodeMessage;
+    document.getElementById("myTable").innerHTML = output;
 }
 
 async function sendMessage(e) {

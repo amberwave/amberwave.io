@@ -1,12 +1,24 @@
     <div class="container m-auto py-4">
-        <div class="row">
-            <div class="col">
+        <div class="">
+            <div class="py-2">
                 <h5 class="">Get Message from Rabbitmq Server</h5>
+            </div>
+            <div class="">
                 <button id="getMsg" class="btn btn-dark">Get Message</button>
             </div>
-            <div class="col">
-                <p class="h5">Message: <span id="msg"></span></p>
-            </div>
+        </div>
+        <div class="py-4">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Node Type</th>
+                    <th>Command</th>
+                </tr>
+                </thead>
+                <tbody id="myTable">
+                </tbody>
+            </table>
         </div>
     </div>
     <hr>
