@@ -32,7 +32,9 @@ async function createConnection(options) {
     });
 
     console.log(`Rabbitmq connection at ${options.hostname}:${options.port}`);
-    return conn;
+    
+    const channel = await conn.createChannel();
+    return channel;
 }
 
 module.exports = createConnection(options);
