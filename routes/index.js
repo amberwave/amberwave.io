@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const devController = require('../controllers/developer');
 
 router.get('/', (req, res) => {
     res.render('welcome', {
