@@ -2,21 +2,20 @@ const Search = require('./search');
 const Consumer = require('../services/consumer');
 const Publisher = require('../services/publisher');
 const asyncHandler = require('express-async-handler');
-const conn = require('../utils/rabbitmq');
+const channel = require('../utils/rabbitmq');
 
 // The rows are passed to the ejs view as a js object as defined
 // in models/developer.js
 exports.getMessage = asyncHandler(async (req, res, next) => {
     //const message = 'Hello World!';
     const queue = 'amberwave-app';
-    const prefetch = 5;
+    const prefetch = 1;
 
-    const connection = await conn;
-    const channel = await connection.createChannel();
+    const ch = await channel; 
 
     console.log('Channel Created...');
 
-    channel.prefetch(prefetch);
+    ch.prefetch(prefetch);
 
     console.log(`Waiting for message from ${queue}`);
 
@@ -24,7 +23,7 @@ exports.getMessage = asyncHandler(async (req, res, next) => {
     let messages = {
         node: []
     };
-    channel.consume(queue, message => {
+    ch.consume(queue, message => {
 
         nodeMsg = message.content.toString();
         console.log(`[x] Consume onMessage: ${nodeMsg}`);
