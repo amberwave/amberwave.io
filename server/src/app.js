@@ -1,7 +1,9 @@
+require('dotenv').config({ path: '../../env/' });
+
 // Third Party Libraries
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes');
+const routes = require('./routes/v1/index');
 
 // Express App Setup
 const app = express();
@@ -22,9 +24,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const routes = require('./routes/v1/index');
 app.set('etag', false); // turn off
-
 
 // v1 Api Routes
 app.use('/v1', routes);

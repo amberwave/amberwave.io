@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
+const testRoutes = require('./test.routes');
 
 /*
   // @route    GET to-do
@@ -26,7 +27,8 @@ const userRoutes = require('./user.routes');
   router.delete('/v1/to-do/:id', ToDoController.deleteToDo);
 */
 
-router.use('/v1/auth', authRoutes);
-router.use('/v1/users', userRoutes);
+router.use('/auth', authRoutes);
+router.use('/users', userRoutes);
+router.use('/test', testRoutes);
 
 module.exports = router;
