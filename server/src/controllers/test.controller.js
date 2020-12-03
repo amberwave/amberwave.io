@@ -4,7 +4,7 @@ exports.getSuccess = (req, res, next) => {
 };
 
 exports.postSuccess = (req, res, next) => {
-    let msg = req.msg;
+    let msg = req.body.msg;
     msg = 'From Server - ' + msg;
     res.status(200).send({ text: msg })
 };

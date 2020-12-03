@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-const db = process.env.DB_NAME;
+const db = process.env.MONGODB_URI;
 
 const connectDB = async () => {
   let attempts = 10;
   while (attempts) {
     try {
-      await mongoose.connect(db);
+      await mongoose.connect(db,  {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true
+      });
       console.log('MongoDB connected...');
       // break out of loop once conncected
       break;

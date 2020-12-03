@@ -1,4 +1,5 @@
-require('dotenv').config({ path: '../../env/' });
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../../env/.env') });
 
 // Third Party Libraries
 const express = require('express');
@@ -25,7 +26,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.set('etag', false); // turn off
-
+// Set Headers
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 // v1 Api Routes
 app.use('/v1', routes);
 
