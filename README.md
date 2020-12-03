@@ -1,2 +1,2 @@
 # amberwave.io
-Amber Wave's Website
+Amber Wave IoT Web Application
