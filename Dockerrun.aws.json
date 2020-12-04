@@ -3,7 +3,7 @@
     "containerDefinitions": [
       {
         "name": "nginx",
-        "image": "lukondefmwila/dkr-multicontainer-app-nginx",
+        "image": "",
         "hostname": "nginx",
         "essential": true,
         "portMappings": [
@@ -17,14 +17,14 @@
       },
       {
         "name": "client",
-        "image": "lukondefmwila/dkr-multicontainer-app-client",
+        "image": "",
         "hostname": "client",
         "essential": false,
         "memory": 300
       },
       {
         "name": "backend",
-        "image": "lukondefmwila/dkr-multicontainer-app-backend",
+        "image": "",
         "hostname": "backend",
         "essential": false,
         "memory": 300

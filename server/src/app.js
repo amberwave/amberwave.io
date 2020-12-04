@@ -14,7 +14,7 @@ const { connectDB } = require('./config/db');
 const environment = process.env.NODE_ENV;
 
 // Server Config
-if (process.env.NODE_ENV !== 'test') {
+if (environment !== 'test') {
   connectDB();
 }
 

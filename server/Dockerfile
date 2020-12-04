@@ -2,26 +2,25 @@
 # automatically unless the configuration is changed.
 
 # specify the node base image with your desired version node:<version>
-# 12.18.4 LTS is the long-term support version
-FROM node:12.18.4
+FROM node:14-alpine
+
+RUN mkdir -p /usr/src/node-app && chown -R node:node /usr/src/node-app
 
 # Specify our working directory for this container
-WORKDIR /application
+WORKDIR /usr/src/node-app
 
 # Copy dependencies list from our application to container
-COPY ./package.json /application/package.json
+COPY ./package.json ./
 # Copy the locked versions of dependencies so that dependencies are consistent
-COPY ./package-lock.json /application/package-lock.json
+COPY ./package-lock.json ./
+
+USER node
 
 # Install dependancies specified in the package.json
 RUN npm install
 
 # Copy code from our repo directory to the container
-COPY . .
+COPY --chown=node:node . .
 
 # Make port 8080 available outside of container
-# EXPOSE 8080
-
-# Run our node commands
-# Theses commands run the application with nodemon & livereload enabled
-CMD ["node", "app.js"]
+EXPOSE 8080

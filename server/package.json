@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "test": "node test/index.js"
+    "dev": "NODE_ENV=development nodemon src/index.js",
+    "test": "node test/index.js",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up"
   },
   "author": "",
   "license": "ISC",
