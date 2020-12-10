@@ -19,6 +19,12 @@ if (process.env.NODE_ENV !== 'test') {
   connectDB();
 }
 
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
+
 // API Data Streams
 app.use(express.json());
 

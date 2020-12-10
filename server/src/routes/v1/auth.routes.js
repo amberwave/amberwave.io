@@ -3,6 +3,7 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 // Load User Model
 const User = require('../../models/User');
@@ -84,6 +85,19 @@ router.post('/login', (req, res, next) => {
       })
     })
 })
+
+// @route   GET /v1/auth/current
+// @desc    Return current authneticated user
+// @access  Private
+router.get('/current', passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    }) 
+  }
+);
 
 // router.post('/register', validate(authValidation.register), authController.register);
 // router.post('/login', validate(authValidation.login), authController.login);
