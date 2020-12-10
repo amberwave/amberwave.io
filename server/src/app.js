@@ -5,6 +5,7 @@ require('dotenv').config({ path: path.join(__dirname, '../../env/.env') });
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/v1/index');
+const passport = require('passport');
 
 // Express App Setup
 const app = express();
@@ -17,6 +18,12 @@ const environment = process.env.NODE_ENV;
 if (process.env.NODE_ENV !== 'test') {
   connectDB();
 }
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
 
 // API Data Streams
 app.use(express.json());
