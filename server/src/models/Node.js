@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const { TIME } = require('sequelize/types');
 const Schema = mongoose.Schema;
 
 // Create Schema
 // Id, Name, Location, Status, Messages, Creation Date, Uptime
+/* TODO Verify that you can save information from RabbitMQ and Send it to frontend
+ */
 const NodeSchema = new Schema({
   id: {
     type: String,
