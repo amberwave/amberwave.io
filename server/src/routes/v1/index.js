@@ -3,6 +3,7 @@ const router = express.Router();
 const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
 const testRoutes = require('./test.routes');
+const profileRoutes = require('./profile.routes');
 
 /*
   // @route    GET to-do
@@ -30,5 +31,6 @@ const testRoutes = require('./test.routes');
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/test', testRoutes);
+router.use('/profile', profileRoutes);
 
 module.exports = router;
