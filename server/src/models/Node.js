@@ -6,7 +6,11 @@ const Schema = mongoose.Schema;
 /* TODO Verify that you can save information from RabbitMQ and Send it to frontend
  */
 const NodeSchema = new Schema({
-  id: {
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
+  key: {
     type: String,
     required: true,
   },
@@ -16,11 +20,9 @@ const NodeSchema = new Schema({
   location: {
     longitude: {
       type: Number,
-      required: true,
     },
     latitude: {
       type: Number,
-      required: true,
     },
     radius: {
       type: Number,
@@ -28,7 +30,6 @@ const NodeSchema = new Schema({
   },
   status: {
     type: String,
-    required: true,
   },
   history: {
     dateCreated: {
@@ -40,7 +41,6 @@ const NodeSchema = new Schema({
     },
     lastConnection: {
       type: Date,
-      default: null,
     },
     upTime: {
       type: Number,
@@ -61,4 +61,4 @@ const NodeSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model('nodes', NodeSchema);
+module.exports = Node = mongoose.model('nodes', NodeSchema);
