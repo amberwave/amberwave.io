@@ -3,21 +3,12 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const Message = require('../../models/Message');
-const Node = require('../../models/Node');
-const Profile = require('../../models/Profile');
-// import middleware
-
-// Validation
-const validateMessageInput = require('../../validation/message');
-const { route } = require('./profile.routes');
+const messageController = require('../../controllers/message.controller');
 
 // @route   GET /v1/messages/test
 // @desc    Test message route
 // @access  Private
-router.get('/test', (req, res) => {
-  res.json({ msg: 'Post Route Works' });
-});
+router.get('/test', messageController.test);
 
 // @route   GET /v1/messages
 // @desc    Get all messages
@@ -25,14 +16,7 @@ router.get('/test', (req, res) => {
 router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Message.find()
-      .sort({ date: -1 })
-      .then((messages) => res.json(messages))
-      .catch((err) =>
-        res.status(404).json({ nomessagesfound: 'No messages found' })
-      );
-  }
+  messageController.getMessages
 );
 
 // @route   GET /v1/messages/:id
@@ -41,15 +25,7 @@ router.get(
 router.get(
   '/:id',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Message.findById(req.params.id)
-      .then((message) => res.json(message))
-      .catch((err) =>
-        res
-          .status(404)
-          .json({ nomessagefound: 'No message found with that ID' })
-      );
-  }
+  messageController.getMessageById
 );
 
 // @route   DELETE /v1/messages/:id
@@ -58,26 +34,7 @@ router.get(
 router.delete(
   '/:id',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Profile.findOne({ user: req.user.id }).then((profile) => {
-      Message.findById(req.params.id)
-        .then((message) => {
-          // Check for message owner
-          if (message.user.toString() !== req.user.id) {
-            return res
-              .status(401)
-              .json({ notauthorized: 'User not authorized' });
-          }
-          // Delete
-          message.deleteOne().then(() => {
-            res.json({ success: true });
-          });
-        })
-        .catch((err) =>
-          res.status(404).json({ messagenotfound: 'Message not found' })
-        );
-    });
-  }
+  messageController.deleteMessageById
 );
 
 // @route   POST /v1/messages
@@ -86,24 +43,7 @@ router.delete(
 router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validateMessageInput(req.body);
-
-    if (!isValid) {
-      // If any errors then send 400 with errors object
-      return res.status(400).json(errors);
-    }
-
-    const newMessage = new Message({
-      message: req.body.message,
-      queue: req.body.queue,
-      user: req.user.id,
-    });
-
-    newMessage.save().then((message) => res.json(message));
-  }
+  messageController.createMessage
 );
-// JSON as String message
-// "{\"location\" : {\"latitude\" : \"121.638779\",\"longitude\" : \"37.339845\"}}",
 
 module.exports = router;
