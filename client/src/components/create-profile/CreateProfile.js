@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import InputGroup from '../common/InputGroup';
+import { createProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class CreateProfile extends Component {
       socialInputs: '',
       company: '',
       website: '',
+      network: '',
       errors: {},
     };
 
@@ -21,9 +24,24 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.errors !== prevProps.errors) {
+      this.setState({ errors: this.props.errors });
+    }
+  }
+
   onSubmit(e) {
     e.preventDefault();
-    console.log('submit');
+
+    const profileData = {
+      handle: this.state.handle,
+      socialInputs: this.state.socialInputs,
+      company: this.state.company,
+      website: this.state.website,
+      network: this.state.network,
+    };
+
+    this.props.createProfile(profileData, this.props.history);
   }
 
   onChange(e) {
@@ -46,7 +64,6 @@ class CreateProfile extends Component {
           />
         </div>
       );
-    } else {
     }
 
     // Select options for status
@@ -94,6 +111,14 @@ class CreateProfile extends Component {
                   error={errors.key}
                   info="Enter the key for you node"
                 />
+                <TextFieldGroup
+                  placeholder="Network Name"
+                  name="network"
+                  value={this.state.network}
+                  onChange={this.onChange}
+                  error={errors.network}
+                  info="Enter name of your network"
+                />
                 <TextAreaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
@@ -104,6 +129,7 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
+                    type="button"
                     className="btn btn-light"
                     onClick={() =>
                       this.setState((prevState) => ({
@@ -140,4 +166,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(mapStateToProps, { createProfile })(
+  withRouter(CreateProfile)
+);
