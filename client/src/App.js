@@ -18,6 +18,7 @@ import Login from './components/auth/Login';
 // Pages
 import NotFound from './components/pages/NotFound';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/create-profile/CreateProfile';
 
 import './App.css';
 
@@ -58,6 +59,11 @@ function App() {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
               <Route component={NotFound} />
             </Switch>
           </div>
