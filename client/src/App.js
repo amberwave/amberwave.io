@@ -1,21 +1,30 @@
+// Third Part Libraries
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
+
+// Authentication Logic
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
+import { clearCurrentProfile } from './actions/profileActions';
+import PrivateRoute from './components/common/PrivateRoute';
+
+// Authentication Pages
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+
+// Pages
+import NotFound from './components/pages/NotFound';
+import Dashboard from './components/dashboard/Dashboard';
 
 import './App.css';
 
+// UI Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
-import NotFound from './components/pages/NotFound';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-import Dashboard from './components/dashboard/Dashboard';
-import { clearCurrentProfile } from './actions/profileActions';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -48,7 +57,7 @@ function App() {
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <Route component={NotFound} />
             </Switch>
           </div>
