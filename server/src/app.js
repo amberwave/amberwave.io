@@ -16,7 +16,13 @@ const environment = process.env.NODE_ENV;
 
 // Server Config
 if (process.env.NODE_ENV !== 'test') {
-  connectDB();
+  connectDB().then((result) => {
+    const server = app.listen(process.env.SERVER_PORT);
+    const io = require('socket.io');
+    io.on('connection', (socket) => {
+      console.log('Socket Connected');
+    });
+  });
 }
 
 // Passport Middleware
@@ -36,7 +42,10 @@ app.set('etag', false); // turn off
 // Set Headers
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  );
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
