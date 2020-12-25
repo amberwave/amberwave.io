@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import { clearCurrentProfile } from '../../actions/profileActions';
+import AmberWaveLogo from '../common/AmberWaveLogo';
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -56,7 +57,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 py--0">
           <div className="container">
             <Link to="/" className="navbar-brand">
-              Logo
+              <AmberWaveLogo />
             </Link>
             <button
               className="navbar-toggler"

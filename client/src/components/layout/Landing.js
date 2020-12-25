@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import AmberWaveMark from '../common/amber-wave-mark.svg';
+import AmberWaveText from '../common/amber-wave-text-white.svg';
 
 class Landing extends Component {
   componentDidMount() {
@@ -17,7 +19,26 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Amber Wave</h1>
+                {/* <h1 className="display-3 mb-4">Amber Wave</h1> */}
+                <div className="d-inline-flex align-items-center">
+                  <img
+                    src={AmberWaveMark}
+                    alt="Amber Wave Mark"
+                    style={{ height: 97, display: 'block' }}
+                  />
+                  <img
+                    src={AmberWaveText}
+                    alt="Amber Wave Text"
+                    style={{
+                      height: 64,
+                      width: 'auto',
+                      display: 'block',
+                      backgroundColor: 'black',
+                      marginLeft: '16px',
+                      fill: 'black',
+                    }}
+                  />
+                </div>
                 <p className="lead">
                   A data collecting network built for people
                 </p>
