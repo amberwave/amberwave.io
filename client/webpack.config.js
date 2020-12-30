@@ -51,6 +51,14 @@ module.exports = {
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
     overlay: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        pathRewrite: { '^/api': '/v1' },
+        secure: false,
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
