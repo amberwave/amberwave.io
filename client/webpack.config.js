@@ -26,6 +26,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
@@ -44,5 +52,8 @@ module.exports = {
     hotOnly: true,
     overlay: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({ path: '../env/.env' }),
+  ],
 };

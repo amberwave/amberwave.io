@@ -1,4 +1,5 @@
 // Third Part Libraries
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -74,4 +75,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(App);
