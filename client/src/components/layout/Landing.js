@@ -12,12 +12,12 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="landing">
+      <div className="landing container">
         <div className="dark-overlay landing-inner text-dark">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Amber Wave</h1>
+                <h1 className="display-3 mb-3 mt-4">Amber Wave</h1>
                 <p className="lead">
                   A data collecting network built for people
                 </p>

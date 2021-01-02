@@ -57,7 +57,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="container">
+          <div className="container-fluid px-0">
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
