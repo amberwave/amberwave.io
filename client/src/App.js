@@ -1,4 +1,5 @@
 // Third Part Libraries
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -19,8 +20,6 @@ import Login from './components/auth/Login';
 import NotFound from './components/pages/NotFound';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
-
-import './App.css';
 
 // UI Components
 import Navbar from './components/layout/Navbar';
@@ -74,4 +73,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(App);
