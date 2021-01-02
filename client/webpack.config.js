@@ -50,13 +50,18 @@ module.exports = {
     port: 3000,
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
-    overlay: true,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
     proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
+      '/api/*': {
+        changeOrigin: true,
+        cookieDomainRewrite: 'localhost',
+        target: 'http://localhost:5000/',
         pathRewrite: { '^/api': '/v1' },
         secure: false,
-        changeOrigin: true,
+        loglevel: 'verbose',
       },
     },
   },

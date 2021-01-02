@@ -12,6 +12,9 @@
     "url": "https://github.com/nichandy/amberwave.io/issues"
   },
   "homepage": "https://github.com/nichandy/amberwave.io#readme",
+  "scripts": {
+    "start": "webpack serve --mode development"
+  },
   "dependencies": {
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
@@ -39,9 +42,6 @@
     "webpack": "^5.11.0",
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.0"
-  },
-  "scripts": {
-    "start": "webpack serve --mode development"
   },
   "browserslist": {
     "production": [
