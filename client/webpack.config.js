@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -22,8 +23,34 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            // Loader for webpack to process CSS with PostCSS
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: function () {
+                  return [require('autoprefixer')];
+                },
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('sass'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -32,10 +59,6 @@ module.exports = {
             loader: 'file-loader',
           },
         ],
-      },
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
       },
     ],
   },
@@ -68,5 +91,10 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({ path: '../env/.env' }),
+    new HtmlWebpackPlugin({
+      title: 'Amber Wave App',
+      filename: './index.html',
+      favicon: './public/favicon.ico',
+    }),
   ],
 };
