@@ -25,6 +25,11 @@ import CreateProfile from './components/create-profile/CreateProfile';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
+import DraggableMap from './components/maps/draggableMap/DraggableMap';
+import SimpleMap from './components/maps/simpleMap/SimpleMap';
+import CitiesMap from './components/maps/citiesMap/CitiesMap';
+import Pins from './components/maps/common/Pins';
+import CityMap from './components/maps/cityMap/CityMap';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -57,6 +62,7 @@ function App() {
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/maps" component={CityMap} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact

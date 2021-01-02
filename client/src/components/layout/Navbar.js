@@ -73,6 +73,11 @@ class Navbar extends Component {
                     Home
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/maps" className="nav-link">
+                    Maps
+                  </Link>
+                </li>
               </ul>
               {isAuthenticated ? authLinks : guestLinks}
             </div>
