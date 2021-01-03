@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import AmberWaveLogo from '../common/amber-wave-logo-1.0.svg';
 
 class Landing extends Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-3 mt-4">Amber Wave</h1>
+                <div className="display-3 mb-3 mt-4">
+                  <AmberWaveLogo height={210} />
+                </div>
                 <p className="lead">
                   A data collecting network built for people
                 </p>

@@ -94,7 +94,6 @@ module.exports = {
     new Dotenv({ path: '../env/.env' }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      title: 'Amber Wave App',
       filename: './index.html',
       favicon: './public/favicon.ico',
     }),
