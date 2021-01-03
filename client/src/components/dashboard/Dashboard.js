@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileActions';
+import { getCurrentNetwork } from '../../actions/networkActions';
 import Spinner from '../common/Spinner';
 import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.getCurrentProfile();
+    this.props.getCurrentNetwork();
   }
 
   render() {
     const { user } = this.props.auth;
-    const { profile, loading } = this.props.profile;
+    const { network, loading } = this.props.network;
 
     let dashboardContent;
 
-    if (profile === null || loading) {
+    if (network === null || loading) {
       dashboardContent = <Spinner />;
     } else {
-      // check if logged in user has profile data
-      if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>TODO: DISPLAY PROFILE</h4>;
+      // check if logged in user has network data
+      if (Object.keys(network).length > 0) {
+        dashboardContent = <h4>TODO: DISPLAY Network</h4>;
       } else {
-        // User is logged in but has no profile
+        // User is logged in but has no network
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Welcom {user.name}</p>
-            <p>You have not setup a profile yet, please add some info</p>
-            <Link to="/create-profile" className="btn btn-lg btn-info">
-              Create Profile
+            <p className="lead text-muted">Welcome {user.name}</p>
+            <p>
+              You have not setup any devices yet, please add a node to your
+              network
+            </p>
+            <Link to="/create-network" className="btn btn-lg btn-info">
+              Add Node
             </Link>
           </div>
         );
@@ -52,14 +55,14 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getCurrentNetwork: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
+  network: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile,
+  network: state.network,
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentNetwork })(Dashboard);

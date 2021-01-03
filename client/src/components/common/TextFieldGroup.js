@@ -14,15 +14,20 @@ const TextFieldGroup = ({
   type,
   onChange,
   disabled,
+  classes,
 }) => {
   return (
     <div className="mb-3">
       <TextFieldLabel labelFor={labelFor} label={label} />
       <input
         type={type}
-        className={classnames('form-control form-control-lg', {
-          'is-invalid': error,
-        })}
+        className={classnames(
+          'form-control form-control-lg',
+          { classes },
+          {
+            'is-invalid': error,
+          }
+        )}
         placeholder={placeholder}
         name={name}
         value={value}
@@ -46,6 +51,7 @@ TextFieldGroup.propTypes = {
   disabled: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelFor: PropTypes.string.isRequired,
+  classes: PropTypes.string,
 };
 
 TextFieldGroup.defaultProps = {
