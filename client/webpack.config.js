@@ -50,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['babel-loader', '@svgr/webpack'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
