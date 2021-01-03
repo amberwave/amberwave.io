@@ -18,7 +18,7 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <ul className="navbar-nav justify-content-end">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link
             to="#"
@@ -39,7 +39,7 @@ class Navbar extends Component {
     );
 
     const guestLinks = (
-      <ul className="navbar-nav justify-content-end">
+      <ul className="navbar-nav ml-auto">
         <li className="navbar-item">
           <Link to="/register" className="nav-link">
             Sign Up
@@ -59,27 +59,29 @@ class Navbar extends Component {
           <div className="container">
             <div className="navbar-brand">
               <Link to="/" className="">
-                <div className="amber-logo justify-content-between">
-                  <AmberWaveMark className="amber-wave-mark" height={42} />
-                  <AmberWaveText fill="white" height={22} />
+                <div className="amber-logo">
+                  <AmberWaveMark
+                    className="amber-wave-mark d-inline-block"
+                    height={42}
+                  />
+                  <AmberWaveText
+                    className="amber-wave-text d-none d-sm-inline-block"
+                    fill="white"
+                    height={22}
+                  />
                 </div>
               </Link>
             </div>
             <button
               className="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#mobile-nav"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobile-nav"
             >
               <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Home
-                  </Link>
-                </li>
                 <li className="nav-item">
                   <Link to="/maps" className="nav-link">
                     Maps
