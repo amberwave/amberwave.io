@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import { clearCurrentProfile } from '../../actions/profileActions';
+import AmberWaveMark from '../common/amber-wave-mark.svg';
+import AmberWaveText from '../common/amber-wave-text-white.svg';
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -53,24 +55,36 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 py--0">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark py--0">
           <div className="container">
-            <Link to="/" className="navbar-brand">
-              Logo
-            </Link>
+            <div className="navbar-brand">
+              <Link to="/" className="">
+                <div className="amber-logo">
+                  <AmberWaveMark
+                    className="amber-wave-mark d-inline-block"
+                    height={42}
+                  />
+                  <AmberWaveText
+                    className="amber-wave-text d-none d-sm-inline-block"
+                    fill="white"
+                    height={22}
+                  />
+                </div>
+              </Link>
+            </div>
             <button
               className="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#mobile-nav"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobile-nav"
             >
               <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Home
+                  <Link to="/maps" className="nav-link">
+                    Maps
                   </Link>
                 </li>
               </ul>

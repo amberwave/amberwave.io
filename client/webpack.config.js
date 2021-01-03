@@ -50,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['babel-loader', '@svgr/webpack'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -73,6 +73,7 @@ module.exports = {
     port: 3000,
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
+    historyApiFallback: true,
     overlay: {
       warnings: true,
       errors: true,
@@ -92,7 +93,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({ path: '../env/.env' }),
     new HtmlWebpackPlugin({
-      title: 'Amber Wave App',
+      template: './public/index.html',
       filename: './index.html',
       favicon: './public/favicon.ico',
     }),
