@@ -1,36 +1,36 @@
 import {
-  GET_PROFILE,
-  PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE,
+  GET_NETWORK,
+  NETWORK_LOADING,
+  CLEAR_CURRENT_NETWORK,
 } from '../actions/types';
 
 const initialState = {
-  profile: null,
-  profiles: null,
+  network: null,
+  networks: null,
   loading: false,
 };
 
-const profileReducer = (state = initialState, action) => {
+const networkReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PROFILE_LOADING:
+    case NETWORK_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case GET_PROFILE:
+    case GET_NETWORK:
       return {
         ...state,
-        profile: action.payload,
+        network: action.payload,
         loading: false,
       };
-    case CLEAR_CURRENT_PROFILE:
+    case CLEAR_CURRENT_NETWORK:
       return {
         ...state,
-        profile: null,
+        network: null,
       };
     default:
       return state;
   }
 };
 
-export default profileReducer;
+export default networkReducer;

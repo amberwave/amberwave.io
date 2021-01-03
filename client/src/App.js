@@ -9,7 +9,7 @@ import jwt_decode from 'jwt-decode';
 // Authentication Logic
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
-import { clearCurrentProfile } from './actions/profileActions';
+import { clearCurrentNetwork } from './actions/networkActions';
 import PrivateRoute from './components/common/PrivateRoute';
 
 // Authentication Pages
@@ -19,7 +19,7 @@ import Login from './components/auth/Login';
 // Pages
 import NotFound from './components/pages/NotFound';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/create-profile/CreateProfile';
+import CreateNetwork from './components/create-network/CreateNetwork';
 
 // UI Components
 import Navbar from './components/layout/Navbar';
@@ -44,8 +44,8 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // logout user
     store.dispatch(logoutUser());
-    // clear current profile
-    store.dispatch(clearCurrentProfile());
+    // clear current network
+    store.dispatch(clearCurrentNetwork());
     // Redirect to login
     window.location.href = '/login';
   }
@@ -66,8 +66,8 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
-                path="/create-profile"
-                component={CreateProfile}
+                path="/create-network"
+                component={CreateNetwork}
               />
               <Route component={NotFound} />
             </Switch>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import TextFieldLabel from './TextFieldLabel';
 
 const SelectListGroup = ({
   name,
@@ -10,6 +11,8 @@ const SelectListGroup = ({
   type,
   onChange,
   options,
+  label,
+  labelFor,
 }) => {
   const selectOptions = options.map((option) => (
     <option key={option.label} value={option.value}>
@@ -17,7 +20,8 @@ const SelectListGroup = ({
     </option>
   ));
   return (
-    <div className="form-group">
+    <div className="mb-3">
+      <TextFieldLabel labelFor={labelFor} label={label} />
       <select
         type={type}
         className={classnames('form-control form-control-lg', {
@@ -41,8 +45,10 @@ SelectListGroup.propTypes = {
   info: PropTypes.string,
   error: PropTypes.string,
   type: PropTypes.string.isRequired,
-  onChange: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.array.isRequired,
+  label: PropTypes.string,
+  labelFor: PropTypes.string,
 };
 
 SelectListGroup.defaultProps = {

@@ -32,7 +32,7 @@ class CreateNetwork extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const profileData = {
+    const networkData = {
       handle: this.state.handle,
       name: this.state.name,
       type: this.state.type,
@@ -53,7 +53,7 @@ class CreateNetwork extends Component {
 
     // Select options for status
     const typeSelect = [
-      { label: '*Select Node Type', value: 0 },
+      { label: 'Select Node Type', value: 0 },
       { label: 'Lite', value: 'lite' },
       { label: 'MidSpeed', value: 'midspeed' },
       { label: 'Heavy', value: 'heavy' },
@@ -62,7 +62,7 @@ class CreateNetwork extends Component {
 
     // Select options for status
     const statusSelect = [
-      { label: '*Select Node Status', value: 0 },
+      { label: 'Select Node Status', value: 0 },
       { label: 'Running', value: 'running' },
       { label: 'Suspended', value: 'suspended' },
       { label: 'Restarting', value: 'restarting' },
@@ -74,11 +74,12 @@ class CreateNetwork extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Network</h1>
+              <h1 className="display-4 text-center mt-5">
+                Create Your Network
+              </h1>
               <p className="lead text-center">
                 Let's get your network started by adding your first node
               </p>
-              <small className="d-block pb-3">* = required field</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   label="Network Handle"
@@ -109,7 +110,7 @@ class CreateNetwork extends Component {
                   error={errors.name}
                   info="Give your node a nickname"
                 />
-                // TODO Add form component for latitude,longitude data
+                {/* TODO Add form component for latitude,longitude data */}
                 <TextFieldGroup
                   label="Coordinates"
                   labelFor="coordinates"
@@ -128,14 +129,14 @@ class CreateNetwork extends Component {
                   onChange={this.onChange}
                   error={errors.topic}
                 />
-                <TextFieldGroup
-                  label="Status"
-                  labelFor="status"
+                <SelectListGroup
+                  label="Node Status"
+                  labelFor="nodeStatus"
                   name="status"
-                  options={statusSelect}
                   value={this.state.status}
                   onChange={this.onChange}
-                  error={errors.longitude}
+                  options={statusSelect}
+                  error={errors.status}
                 />
                 <input
                   type="submit"

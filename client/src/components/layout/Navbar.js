@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
-import { clearCurrentProfile } from '../../actions/profileActions';
+import { clearCurrentNetwork } from '../../actions/networkActions';
 import AmberWaveMark from '../common/amber-wave-mark.svg';
 import AmberWaveText from '../common/amber-wave-text-white.svg';
 
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
-    this.props.clearCurrentProfile();
+    this.props.clearCurrentNetwork();
     this.props.logoutUser();
   }
 
@@ -106,6 +106,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
+export default connect(mapStateToProps, { logoutUser, clearCurrentNetwork })(
   Navbar
 );
