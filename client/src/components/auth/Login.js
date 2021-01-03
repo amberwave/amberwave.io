@@ -62,7 +62,8 @@ class Login extends Component {
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="Email Address"
+                  labelFor="emailLogin"
+                  label="Email"
                   name="email"
                   type="email"
                   value={this.state.email}
@@ -70,7 +71,8 @@ class Login extends Component {
                   error={errors.email}
                 />
                 <TextFieldGroup
-                  placeholder="Password"
+                  labelFor="passwordLogin"
+                  label="Password"
                   name="password"
                   type="password"
                   value={this.state.password}

@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import TextFieldLabel from './TextFieldLabel';
 
 const TextFieldGroup = ({
   name,
+  label,
+  labelFor,
   placeholder,
   value,
-  label,
   error,
   info,
   type,
@@ -14,7 +16,8 @@ const TextFieldGroup = ({
   disabled,
 }) => {
   return (
-    <div className="form-group">
+    <div className="mb-3">
+      <TextFieldLabel labelFor={labelFor} label={label} />
       <input
         type={type}
         className={classnames('form-control form-control-lg', {
@@ -27,7 +30,7 @@ const TextFieldGroup = ({
         disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedbacl">{error}</div>}
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 };
@@ -41,6 +44,8 @@ TextFieldGroup.propTypes = {
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  labelFor: PropTypes.string.isRequired,
 };
 
 TextFieldGroup.defaultProps = {

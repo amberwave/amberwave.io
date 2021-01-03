@@ -61,14 +61,16 @@ class Register extends Component {
               <p className="lead text-center">Create your Amber Wave Account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="Name"
+                  labelFor="nameRegistration"
+                  label="Name"
                   name="name"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
                 />
                 <TextFieldGroup
-                  placeholder="Email Address"
+                  labelFor="emailRegistration"
+                  label="Email"
                   name="email"
                   type="email"
                   value={this.state.email}
@@ -77,7 +79,9 @@ class Register extends Component {
                   error={errors.email}
                 />
                 <TextFieldGroup
-                  placeholder="Password"
+                  labelFor="passwordRegistration"
+                  label="Password"
+                  placeholder="Password must be at least 8 characters"
                   name="password"
                   type="password"
                   value={this.state.password}
@@ -85,7 +89,8 @@ class Register extends Component {
                   error={errors.password}
                 />
                 <TextFieldGroup
-                  placeholder="Confirm Password"
+                  labelFor="confirmPassRegistration"
+                  label="Confirm Password"
                   name="passwordConfirmed"
                   type="password"
                   value={this.state.passwordConfirmed}
