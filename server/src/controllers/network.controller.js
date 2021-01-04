@@ -4,15 +4,17 @@ const validateNetworkInput = require('../validation/network');
 // Load Profile Model
 const Network = require('../models/Network');
 
-// @route   GET /v1/network
+// @route   GET /v1/network/:id
 // @desc    Get a single network
 // @access  Private
 exports.getNetwork = (req, res) => {
   const errors = {};
+  console.log('Net Id: ' + req.params.id);
 
-  Network.findOne({ user: req.user.id, name: req.body.name })
+  Network.find({ user: { id: req.user.id }, id: req.params.id })
     .populate('user', ['name', 'avatar'])
     .then((network) => {
+      console.log('Network: ' + network);
       if (!network) {
         errors.nonetwork = 'No networks found for this user';
         return res.status(404).json(errors);
@@ -28,7 +30,7 @@ exports.getNetwork = (req, res) => {
 exports.getNetworks = (req, res) => {
   const errors = {};
 
-  Network.findAll({ user: req.user.id })
+  Network.find({ user: req.user.id })
     .populate('user', ['name', 'avatar'])
     .then((networks) => {
       if (!networks) {
@@ -85,10 +87,13 @@ exports.updateNetwork = (req, res) => {
   networkFields.id = req.params.id;
   networkFields.nodes = req.body.nodes; // Update node array on frontend
 
+  console.log('Net Id: ' + req.params.id);
+
   // networkNodes.forEach(node => console.log(node));
   Network.findOne({ user: req.user.id, id: req.params.id }).then((network) => {
+    console.log('Network: ' + network);
     if (!network) {
-      errors.nonetwork = 'No network found by that name';
+      errors.nonetwork = 'No network found';
       return res.status(404).json(errors);
     }
 
@@ -114,9 +119,9 @@ exports.deleteNetwork = (req, res) => {
   const errors = {};
   const networkFields = {};
   networkFields.user = req.user.id;
-  networkFields.name = req.body.name;
+  networkFields.id = req.param.id;
 
-  Network.findOne({ user: networkFields.user, name: networkFields.name })
+  Network.findOne({ user: networkFields.user, name: networkFields.id })
     .then((network) => {
       if (!network) {
         errors.nonetwork = 'No network found by that name';
@@ -124,7 +129,7 @@ exports.deleteNetwork = (req, res) => {
       }
       // Delete
       network.deleteOne().then(() => {
-        res.status(200).json({ success: true });
+        return res.status(200).json({ success: true });
       });
     })
     .catch((err) => res.status(404).json(err));

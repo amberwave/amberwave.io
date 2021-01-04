@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const networkController = require('../../controllers/network.controller');
 
-// @route   GET /v1/networks
+// @route   GET /v1/network/all
 // @desc    Get all networks
 // @access  Public
 router.get(
-  '/',
+  '/all',
   passport.authenticate('jwt', { session: false }),
   networkController.getNetworks
 );
@@ -35,7 +35,7 @@ router.delete(
 // @desc    Update network by id
 // @access  Private
 router.patch(
-  '/',
+  '/:id',
   passport.authenticate('jwt', { session: false }),
   networkController.updateNetwork
 );
