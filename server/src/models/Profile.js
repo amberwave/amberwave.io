@@ -18,10 +18,6 @@ const ProfileSchema = new Schema({
     required: true,
     max: 40,
   },
-  network: {
-    type: [Schema.Types.ObjectId],
-    ref: 'nodes',
-  },
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
