@@ -6,6 +6,7 @@ const testRoutes = require('./test.routes');
 const profileRoutes = require('./profile.routes');
 const messageRoutes = require('./message.routes');
 const nodeRoutes = require('./node.routes');
+const networkRoutes = require('./network.routes');
 
 /*
   // @route    GET to-do
@@ -36,5 +37,6 @@ router.use('/test', testRoutes);
 router.use('/profile', profileRoutes);
 router.use('/messages', messageRoutes);
 router.use('/nodes', nodeRoutes);
+router.use('/network', networkRoutes);
 
 module.exports = router;

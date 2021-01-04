@@ -51,7 +51,7 @@ exports.createNetwork = (req, res) => {
   }
 
   const networkFields = {};
-  networkFields.user = req.body.user;
+  networkFields.user = req.user.id;
   networkFields.name = req.body.name;
 
   // networkNodes.forEach(node => console.log(node));
@@ -70,7 +70,7 @@ exports.createNetwork = (req, res) => {
   );
 };
 
-// @route   PATCH /v1/network
+// @route   PATCH /v1/network/:id
 // @desc    Update a network
 // @access  Private
 exports.updateNetwork = (req, res) => {
@@ -81,35 +81,33 @@ exports.updateNetwork = (req, res) => {
   }
 
   const networkFields = {};
-  networkFields.user = req.body.user;
-  networkFields.name = req.body.name;
+  networkFields.user = req.user.id;
+  networkFields.id = req.params.id;
   networkFields.nodes = req.body.nodes; // Update node array on frontend
 
   // networkNodes.forEach(node => console.log(node));
-  Network.findOne({ user: req.user.id, name: req.body.name }).then(
-    (network) => {
-      if (!network) {
-        errors.nonetwork = 'No network found by that name';
-        return res.status(404).json(errors);
-      }
-
-      networkFields.nodes.forEach((node) => {
-        if (network.nodes.includes(node.id)) {
-          errors.duplicate_node = 'Node already exists in network';
-          return res.status(400).json(errors);
-        }
-      });
-
-      Network.findOneAndUpdate(
-        { user: req.user.id },
-        { $set: networkFields },
-        { new: true }
-      ).then((network) => res.status(201).json(network));
+  Network.findOne({ user: req.user.id, id: req.params.id }).then((network) => {
+    if (!network) {
+      errors.nonetwork = 'No network found by that name';
+      return res.status(404).json(errors);
     }
-  );
+
+    networkFields.nodes.forEach((node) => {
+      if (network.nodes.includes(node.id)) {
+        errors.duplicate_node = 'Node already exists in network';
+        return res.status(400).json(errors);
+      }
+    });
+
+    Network.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: networkFields },
+      { new: true }
+    ).then((network) => res.status(201).json(network));
+  });
 };
 
-// @route   Delete /v1/network
+// @route   Delete /v1/network/:id
 // @desc    Delete user network(s)
 // @access  Private
 exports.deleteNetwork = (req, res) => {
