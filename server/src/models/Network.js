@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
         - Active User
         - Messages
 */
-const ProfileSchema = new Schema({
+const NetworkSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users',
@@ -24,4 +24,4 @@ const ProfileSchema = new Schema({
   },
 });
 
-module.exports = Profile = mongoose.model('profile', ProfileSchema);
+module.exports = Profile = mongoose.model('network', NetworkSchema);
