@@ -7,7 +7,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { getNode, getNodes } from '../../actions/nodeActions';
 
-class Nodes extends Component {
+class Inventory extends Component {
   componentDidMount() {
     this.props.getNodes();
   }
@@ -16,17 +16,17 @@ class Nodes extends Component {
     const { user } = this.props.auth;
     const { nodes } = this.props.nodes;
 
-    let nodes;
+    let inventoryContent;
 
     if (nodes === null || loading) {
-      nodeTable = <Spinner />;
+      inventoryTable = <Spinner />;
     } else {
       // check if logged in user has profile data
       if (Object.keys(nodes).length > 0) {
-        nodeTable = <h4>TODO: DISPLAY NODES</h4>;
+        inventoryTable = <h4>TODO: DISPLAY NODES</h4>;
       } else {
         // User is logged in but has no nodes
-        nodeTable = (
+        inventoryTable = (
           <div>
             <p className="lead text-muted">Welcome {user.name}</p>
             <p>You don't have any devices setup yet</p>
@@ -44,7 +44,7 @@ class Nodes extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="display-4">Inventory</div>
-              {nodeContent}
+              {inventoryContent}
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ class Nodes extends Component {
   }
 }
 
-Dashboard.propTypes = {
+Inventory.propTypes = {
   getNodes: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   nodes: PropTypes.object.isRequired,
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getNodes })(Nodes);
+export default connect(mapStateToProps, { getNodes })(Inventory);

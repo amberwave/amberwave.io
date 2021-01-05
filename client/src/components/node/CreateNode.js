@@ -150,7 +150,7 @@ class CreateNode extends Component {
   }
 }
 
-AddNode.propTypes = {
+CreateNode.propTypes = {
   node: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
