@@ -6,7 +6,7 @@ import { GET_ERRORS, GET_NODE, GET_NODES } from './types';
 export const createNode = (nodeData, history) => (dispatch) => {
   axios
     .post('/api/node', nodeData)
-    .then((res) => history.push('/dashboard'))
+    .then((res) => history.push('/nodes'))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
@@ -38,13 +38,13 @@ export const getNodes = () => (dispatch) => {
     .get('/api/node')
     .then((res) =>
       dispatch({
-        type: GET_NODE,
+        type: GET_NODES,
         payload: res.data,
       })
     )
     .catch((err) =>
       dispatch({
-        type: GET_NODE,
+        type: GET_NODES,
         payload: {},
       })
     );

@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
-import { addNode } from '../../actions/networkActions';
+import { createNode } from '../../actions/nodeActions';
 
-class AddNode extends Component {
+class CreateNode extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,8 +32,8 @@ class AddNode extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const networkData = {
-      handle: this.state.handle,
+    const nodeData = {
+      key: this.state.key,
       name: this.state.name,
       type: this.state.type,
       coordinates: this.state.coordinates,
@@ -41,7 +41,7 @@ class AddNode extends Component {
       topic: this.state.topic,
     };
 
-    this.props.addNode(networkData, this.props.history);
+    this.props.createNode(nodeData, this.props.history);
   }
 
   onChange(e) {
@@ -70,25 +70,33 @@ class AddNode extends Component {
     ];
 
     return (
-      <div className="create-network">
+      <div className="create-node">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center mt-5">
-                Create Your Network
-              </h1>
+              <h1 className="display-4 text-center mt-5">Create a Node</h1>
               <p className="lead text-center">
-                Let's get your network started by adding your first node
+                Fill out the form to setup your node
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  label="Network Handle"
-                  labelFor="networkHandle"
-                  name="handle"
-                  value={this.state.handle}
+                  label="Node Name"
+                  labelFor="nodeName"
+                  placeholder="Blue Burger"
+                  name="name"
+                  value={this.state.name}
                   onChange={this.onChange}
-                  error={errors.handle}
-                  info="A unique URL handle for your network"
+                  error={errors.name}
+                  info="Give your node a nickname"
+                />
+                <TextFieldGroup
+                  label="Node Key"
+                  labelFor="=key"
+                  name="key"
+                  value={this.state.key}
+                  onChange={this.onChange}
+                  error={errors.key}
+                  info="A unique key to connect to your device"
                 />
                 <SelectListGroup
                   label="Node Type"
@@ -99,16 +107,6 @@ class AddNode extends Component {
                   options={typeSelect}
                   error={errors.type}
                   info="Select the type of node you'd like to setup"
-                />
-                <TextFieldGroup
-                  label="Node Name"
-                  labelFor="nodeName"
-                  placeholder="Blue Burger"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  error={errors.name}
-                  info="Give your node a nickname"
                 />
                 {/* TODO Add form component for latitude,longitude data */}
                 <TextFieldGroup
@@ -153,13 +151,13 @@ class AddNode extends Component {
 }
 
 AddNode.propTypes = {
-  network: PropTypes.object.isRequired,
+  node: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  network: state.network,
+  node: state.node,
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { addNode })(withRouter(AddNode));
+export default connect(mapStateToProps, { createNode })(withRouter(CreateNode));
