@@ -1,12 +1,23 @@
 import axios from 'axios';
 
-import { GET_ERRORS, GET_NODE, GET_NODES } from './types';
+import {
+  GET_ERRORS,
+  GET_NODE,
+  GET_NODES,
+  DELETE_NODE,
+  CREATE_NODE,
+} from './types';
 
 // Create Node
 export const createNode = (nodeData, history) => (dispatch) => {
   axios
     .post('/api/node', nodeData)
-    .then((res) => history.push('/nodes'))
+    .then((res) =>
+      dispatch({
+        type: CREATE_NODE,
+        payload: res.data,
+      })
+    )
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,

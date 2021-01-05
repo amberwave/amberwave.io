@@ -32,7 +32,10 @@ class CreateNode extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    const { user } = this.props.auth;
+
     const nodeData = {
+      user: user,
       key: this.state.key,
       name: this.state.name,
       type: this.state.type,
@@ -151,12 +154,13 @@ class CreateNode extends Component {
 }
 
 CreateNode.propTypes = {
-  node: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  createNode: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  node: state.node,
+  auth: state.auth,
   errors: state.errors,
 });
 

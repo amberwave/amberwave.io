@@ -14,29 +14,28 @@ class Inventory extends Component {
 
   render() {
     const { user } = this.props.auth;
-    const { nodes } = this.props.nodes;
 
     let inventoryContent;
 
-    if (nodes === null || loading) {
-      inventoryTable = <Spinner />;
-    } else {
-      // check if logged in user has profile data
-      if (Object.keys(nodes).length > 0) {
-        inventoryTable = <h4>TODO: DISPLAY NODES</h4>;
-      } else {
-        // User is logged in but has no nodes
-        inventoryTable = (
-          <div>
-            <p className="lead text-muted">Welcome {user.name}</p>
-            <p>You don't have any devices setup yet</p>
-            <Link to="/add-node" className="btn btn-lg btn-info">
-              Add Node
-            </Link>
-          </div>
-        );
-      }
-    }
+    // if (nodes === null || loading || nodes === 'undefined') {
+    //   inventoryTable = <Spinner />;
+    // } else {
+    //   // check if logged in user has profile data
+    //   if (Object.keys(nodes).length > 0) {
+    //     inventoryTable = <h4>TODO: DISPLAY NODES</h4>;
+    //   } else {
+    //     // User is logged in but has no nodes
+    //     inventoryTable = (
+    //       <div>
+    //         <p className="lead text-muted">Welcome {user.name}</p>
+    //         <p>You don't have any devices setup yet</p>
+    //         <Link to="/add-node" className="btn btn-lg btn-info">
+    //           Add Node
+    //         </Link>
+    //       </div>
+    //     );
+    //   }
+    // }
 
     return (
       <div className="nodes">
@@ -56,11 +55,11 @@ class Inventory extends Component {
 Inventory.propTypes = {
   getNodes: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  nodes: PropTypes.object.isRequired,
+  // nodes: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  nodes: state.nodes,
+  // nodes: state.nodes,
   auth: state.auth,
 });
 
