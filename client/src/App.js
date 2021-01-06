@@ -30,6 +30,7 @@ import SimpleMap from './components/maps/simpleMap/SimpleMap';
 import CitiesMap from './components/maps/citiesMap/CitiesMap';
 import Pins from './components/maps/common/Pins';
 import CityMap from './components/maps/cityMap/CityMap';
+import NodeMap from './components/maps/nodeMap/NodeMap';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -62,7 +63,7 @@ function App() {
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/maps" component={CityMap} />
+              <Route exact path="/maps" component={NodeMap} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
