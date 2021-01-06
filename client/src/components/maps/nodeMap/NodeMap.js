@@ -37,9 +37,12 @@ class NodeMap extends Component {
   };
 
   renderNodeMarker = (node, index) => {
-    const { longitude, latitude } = node.coordinates;
     return (
-      <Marker key={`marker-${index}`} longitude={longitude} latitude={latitude}>
+      <Marker
+        key={`marker-${index}`}
+        longitude={node.longitude}
+        latitude={node.latitude}
+      >
         <NodePin size={20} onClick={() => this.setState({ popupInfo: node })} />
       </Marker>
     );
@@ -47,14 +50,14 @@ class NodeMap extends Component {
 
   renderPopup() {
     const { popupInfo } = this.state;
-    const { longitude, latitude } = popupInfo.coordinates;
+    console.log(popupInfo);
     return (
       popupInfo && (
         <Popup
           tipSize={5}
           anchor="top"
-          longitude={longitude}
-          latitude={latitude}
+          longitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
@@ -72,7 +75,7 @@ class NodeMap extends Component {
         {...viewport}
         width="100vw"
         height="80vh"
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         onViewportChange={this.updateViewport}
         mapboxApiAccessToken={TOKEN}
       >

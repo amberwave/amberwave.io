@@ -5,10 +5,8 @@
     "type": "EPA",
     "status": "running",
     "topic": "/drollsRindier/epa",
-    "coordinates": {
-      "latitude": 40.6643,
-      "longitude": -73.9385
-    }
+    "latitude": 40.6643,
+    "longitude": -73.9385
   },
   {
     "key": "Los Angeles",
@@ -16,10 +14,8 @@
     "type": "Lite",
     "status": "running",
     "topic": "/deforestersDeerlike/lite",
-    "coordinates": {
-      "latitude": 34.0194,
-      "longitude": -118.4108
-    }
+    "latitude": 34.0194,
+    "longitude": -118.4108
   },
   {
     "key": "Chicago",
@@ -27,10 +23,8 @@
     "type": "Lite",
     "status": "suspended",
     "topic": "/interdictorsDopily/lite",
-    "coordinates": {
-      "latitude": 41.8376,
-      "longitude": -87.6818
-    }
+    "latitude": 41.8376,
+    "longitude": -87.6818
   },
   {
     "key": "Houston",
@@ -38,10 +32,8 @@
     "type": "heavy",
     "status": "suspended",
     "topic": "/staphylomataJudiciary/heavy",
-    "coordinates": {
-      "latitude": 29.7805,
-      "longitude": -95.3863
-    }
+    "latitude": 29.7805,
+    "longitude": -95.3863
   },
   {
     "key": "Phoenix",
@@ -49,64 +41,52 @@
     "type": "heavy",
     "status": "shutdown",
     "topic": "/squealersResidue/heavy",
-    "coordinates": {
-      "latitude": 33.5722,
-      "longitude": -112.088
-    }
+    "latitude": 33.5722,
+    "longitude": -112.088
   },
   {
     "key": "Philadelphia",
     "name": "rivalingFained",
-    "type": "midspeed",
+    "type": "Midspeed",
     "status": "running",
     "topic": "/rivalingFained/midspeed",
-    "coordinates": {
-      "latitude": 40.0094,
-      "longitude": -75.1333
-    }
+    "latitude": 40.0094,
+    "longitude": -75.1333
   },
   {
     "key": "San Antonio",
     "name": "creepagesZanders",
-    "type": "lite",
+    "type": "Lite",
     "status": "shutdown",
     "topic": "/creepagesZanders/lite",
-    "coordinates": {
-      "latitude": 29.4724,
-      "longitude": -98.5251
-    }
+    "latitude": 29.4724,
+    "longitude": -98.5251
   },
   {
     "key": "San Diego",
     "name": "slingingFullfaces",
-    "type": "midspeed",
+    "type": "Midspeed",
     "status": "suspended",
     "topic": "/slingingFullfaces/midspeed",
-    "coordinates": {
-      "latitude": 32.8153,
-      "longitude": -117.135
-    }
+    "latitude": 32.8153,
+    "longitude": -117.135
   },
   {
     "key": "Dallas",
     "name": "clocheNarratively",
-    "type": "midspeed",
+    "type": "Midspeed",
     "status": "running",
     "topic": "/clocheNarratively/midspeed",
-    "coordinates": {
-      "latitude": 32.7757,
-      "longitude": -96.7967
-    }
+    "latitude": 32.7757,
+    "longitude": -96.7967
   },
   {
     "key": "San Jose",
     "name": "praisefulRizzarts",
-    "type": "lite",
+    "type": "Lite",
     "status": "running",
     "topic": "/praisefulRizzarts/lite",
-    "coordinates": {
-      "latitude": 37.2969,
-      "longitude": -121.8193
-    }
+    "latitude": 37.2969,
+    "longitude": -121.8193
   }
 ]
