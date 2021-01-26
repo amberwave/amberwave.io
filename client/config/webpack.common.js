@@ -1,19 +1,20 @@
 const path = require('path');
 const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let env = process.env.NODE_ENV;
 env = env || 'development';
-if (env === 'development' || env === 'test') {
-  const envFile = `../.env.${env}`;
-  dotenv.config({ path: envFile });
-}
+const envFile = `./.env.${env}`;
+dotenv.config({ path: envFile });
 
 module.exports = {
-  context: path.resolve(__dirname, '..'),
-  entry: './src/index.js',
+  context: path.resolve(__dirname, '..', 'src'),
+  entry: './index.js',
+  mode: 'development',
+  resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: path.join(__dirname, '..', 'public', 'dist'),
     filename: 'bundle.js',
@@ -36,8 +37,9 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -79,16 +81,12 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'index.css',
-    }),
-    new webpack.DefinePlugin({}),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: './index.html',
-      favicon: './public/favicon.ico',
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.MAPBOX_ACCESS_TOKEN': JSON.stringify(
+        process.env.MAPBOX_ACCESS_TOKEN
+      ),
     }),
   ],
 };
