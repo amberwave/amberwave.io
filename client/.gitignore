@@ -16,7 +16,6 @@
 .env.production
 .env.test
 .env.development
-.env*
 
 npm-debug.log*
 yarn-debug.log*
