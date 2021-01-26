@@ -12,10 +12,10 @@ if (env === 'development' || env === 'test') {
 }
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  context: path.resolve(__dirname, '..'),
+  entry: './src/index.js',
   output: {
-    path: path.join(__dirname, 'public', 'dist'),
+    path: path.join(__dirname, '..', 'public', 'dist'),
     filename: 'bundle.js',
   },
   module: {
@@ -38,7 +38,6 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -83,7 +82,7 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'index.css',
     }),
     new webpack.DefinePlugin({}),
     new HtmlWebpackPlugin({
