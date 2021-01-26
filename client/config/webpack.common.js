@@ -86,5 +86,10 @@ module.exports = {
       filename: 'style.css',
     }),
     new webpack.DefinePlugin({}),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: './index.html',
+      favicon: './public/favicon.ico',
+    }),
   ],
 };
