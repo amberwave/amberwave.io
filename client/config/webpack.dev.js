@@ -9,9 +9,9 @@ module.exports = merge(common, {
   devtool: 'eval-cheap-module-source-map',
 
   devServer: {
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, '..', 'public/'),
     port: 3000,
-    publicPath: 'http://localhost:3000/dist/',
+    publicPath: '/dist/',
     hotOnly: true,
     historyApiFallback: true,
     overlay: {
