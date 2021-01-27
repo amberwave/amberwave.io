@@ -1,5 +1,5 @@
 //import action
-const nodesReducerDefaultState = [];
+const nodesReducerDefaultState = {};
 
 const nodesReducer = (state = nodesReducerDefaultState, action) => {
   switch (action.type) {

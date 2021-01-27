@@ -20,15 +20,12 @@ import Login from './components/auth/Login';
 import NotFound from './components/pages/NotFound';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
+import InventoryPage from './components/inventory/InventoryPage';
 
 // UI Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
-import DraggableMap from './components/maps/draggableMap/DraggableMap';
-import SimpleMap from './components/maps/simpleMap/SimpleMap';
-import CitiesMap from './components/maps/citiesMap/CitiesMap';
-import Pins from './components/maps/common/Pins';
 import CityMap from './components/maps/cityMap/CityMap';
 
 // Check for token
@@ -63,6 +60,7 @@ function App() {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/maps" component={CityMap} />
+              <Route exact path="/inventory" component={InventoryPage} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
