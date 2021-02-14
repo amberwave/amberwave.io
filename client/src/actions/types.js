@@ -19,7 +19,7 @@ export const EDIT_NODE = 'EDIT_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
 
 // Filter Actions
-export const SET_TEXT_FILTERS = 'SET_TEXT_FILTERS';
+export const SET_TEXT_FILTER = 'SET_TEXT_FILTERS';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const SORT_BY_STATUS = 'SORT_BY_STATUS';
 export const SORT_BY_TYPE = 'SORT_BY_TYPE';
