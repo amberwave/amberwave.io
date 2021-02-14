@@ -17,3 +17,14 @@ export const GET_NODES = 'GET_NODES';
 export const CREATE_NODE = 'CREATE_NODE';
 export const EDIT_NODE = 'EDIT_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
+
+// Filter Actions
+export const SET_TEXT_FILTERS = 'SET_TEXT_FILTERS';
+export const SORT_BY_NAME = 'SORT_BY_NAME';
+export const SORT_BY_STATUS = 'SORT_BY_STATUS';
+export const SORT_BY_TYPE = 'SORT_BY_TYPE';
+export const SORT_BY_DATE = 'SORT_BY_DATE';
+export const SORT_BY_LOCATION = 'SORT_BY_LOCATION';
+export const SET_LOCATION = 'SET_LOCATION';
+export const SORT_BY_LOCATION_RADIUS = 'SORT_BY_LOCATION_RADIUS';
+export const SORT_BY_DATA_TYPE = 'SORT_BY_DATA_TYPE';
