@@ -8,5 +8,5 @@ export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   profile: profileReducer,
-  filter: filterReducer,
+  filters: filterReducer,
 });
