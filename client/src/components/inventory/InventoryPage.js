@@ -1,9 +1,10 @@
 import React from 'react';
-// child component imports
+import InventoryList from './InventoryList';
 
 const InventoryPage = () => (
   <div>
     <h1>Inventory Page</h1>
+    <InventoryList />
   </div>
 );
 

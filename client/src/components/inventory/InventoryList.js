@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import InventoryListItem from 'InventoryListItem';
+import InventoryListItem from './InventoryListItem';
 
 export const InventoryList = (props) => {
   return (
@@ -26,7 +26,7 @@ export const InventoryList = (props) => {
             </tr>
           ) : (
             props.nodes.map((node) => {
-              return <InventoryListItem key={node.id} {...node} />;
+              return <InventoryListItem key={node._id} {...node} />;
             })
           )}
         </tbody>
