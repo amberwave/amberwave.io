@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render InventoryListItem with node data 1`] = `
+<tr>
+  <td>
+    superpatriotismsProoemion
+  </td>
+  <td>
+    EPA
+  </td>
+  <td>
+    1
+  </td>
+  <td>
+    (
+    90
+    , 
+    127.12
+    , 
+    10
+    )
+  </td>
+  <td>
+    <Component />
+  </td>
+  <td>
+    superpatriotismsProoemion
+    /
+    ambient-light
+  </td>
+  <td>
+    suspended
+  </td>
+</tr>
+`;
