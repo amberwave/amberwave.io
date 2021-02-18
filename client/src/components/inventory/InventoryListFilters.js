@@ -12,6 +12,10 @@ import {
 
 export class InventoryListFilters extends Component {
   onTextChange = (e) => {
+    this.props.setTextFilter(e.target.value);
+  };
+
+  onSortChange = (e) => {
     switch (e.target.value) {
       case 'name':
         this.props.sortByName();
@@ -43,10 +47,8 @@ export class InventoryListFilters extends Component {
           onChange={this.onTextChange}
         />
         <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
-          <option value="name">Name</option>
           <option value="type">Type</option>
           <option value="status">Status</option>
-          <option value="location">Location</option>
           <option value="dataType">Data Type</option>
           <option value="date">Date</option>
         </select>
@@ -59,7 +61,7 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text)),
   sortByName: () => dispatch(sortByName()),
   sortByDate: () => dispatch(sortByDate()),

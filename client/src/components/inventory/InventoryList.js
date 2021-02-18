@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InventoryListItem from './InventoryListItem';
+import selectNodes from '../../selectors/nodes';
 
 export const InventoryList = (props) => {
   return (
