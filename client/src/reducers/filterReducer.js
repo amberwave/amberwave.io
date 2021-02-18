@@ -1,8 +1,10 @@
-import moment from 'moment';
-
 const filterReducerDefaultState = {
   text: '',
   sortBy: 'name',
+  location: {
+    latitude: 0,
+    longitude: 0,
+  },
 };
 
 const filterReducer = (state = filterReducerDefaultState, action) => {
@@ -57,6 +59,8 @@ const filterReducer = (state = filterReducerDefaultState, action) => {
         ...state,
         sortBy: 'dataType',
       };
+    default:
+      return state;
   }
 };
 

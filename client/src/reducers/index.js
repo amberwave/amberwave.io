@@ -3,10 +3,12 @@ import authReducer from './authReducer';
 import errorReducer from './errorReducer';
 import profileReducer from './profileReducer';
 import filterReducer from './filterReducer';
+import nodesReducer from './nodesReducer';
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   profile: profileReducer,
   filters: filterReducer,
+  nodes: nodesReducer,
 });
