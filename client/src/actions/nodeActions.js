@@ -10,7 +10,6 @@ import {
 
 // GET_NODE Action Generator
 export const getNode = () => (dispatch) => {
-  dispatch(setNodeLoading());
   axios
     .get('/api/node')
     .then((res) =>
@@ -29,7 +28,6 @@ export const getNode = () => (dispatch) => {
 
 // GET_NODES
 export const getNodes = () => (dispatch) => {
-  dispatch(setNodeLoading());
   axios
     .get('/api/nodes')
     .then((res) =>
